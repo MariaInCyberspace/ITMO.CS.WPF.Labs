@@ -20,6 +20,7 @@ namespace WpfHello
     /// </summary>
     public partial class MainWindow : Window
     {
+        string nameFile = "username.txt";
         public MyWindow myWin { get; set; } 
         bool isDataDirty = false;
         public MainWindow()
@@ -32,50 +33,20 @@ namespace WpfHello
             Left = 25;
         }
 
-        private void setBut_Click(object sender, RoutedEventArgs e)
+        private void SetBut()
         {
-            System.IO.StreamWriter sw = null;
-            try
-            {
-                sw = new System.IO.StreamWriter("username.txt");
-                sw.WriteLine(setText.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (sw != null)
-                {
-                    sw.Close();
-                    isDataDirty = false;
-                    retBut.IsEnabled = true;
-                }
-            }
+            System.IO.StreamWriter sw = new System.IO.StreamWriter(nameFile);
+            sw.WriteLine(setText.Text);
+            sw.Close();
+            isDataDirty = false;
+            retBut.IsEnabled = true;
         }
 
-        private void retBut_Click(object sender, RoutedEventArgs e)
+        private void RetBut()
         {
-            System.IO.StreamReader sr = null;
-            try
-            {
-                using (sr = new System.IO.StreamReader("username.txt"))
-                {
-                    retLabel.Content = "Приветствую Вас, уважаемый " + sr.ReadToEnd();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                if (sr != null)
-                {
-                    sr.Close();
-                }
-            }
+            System.IO.StreamReader sr = new System.IO.StreamReader(nameFile);
+            retLabel.Content = "Приветствую Вас, уважаемый " + sr.ReadToEnd();
+            sr.Close();
         }
 
         private void setText_TextChanged(object sender, TextChangedEventArgs e)
@@ -114,6 +85,28 @@ namespace WpfHello
             myWin.Top = Location.Y;
             myWin.Left = Location.X + New_Win.Width;
             myWin.Show();
+        }
+
+        private void Grid_Click(object sender, RoutedEventArgs e)
+        {
+            FrameworkElement feSource = e.Source as FrameworkElement;
+            try
+            {
+                switch (feSource.Name)
+                {
+                    case "setBut":
+                        SetBut();
+                        break;
+                    case "retBut":
+                        RetBut();
+                        break;
+                }
+                e.Handled = true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
