@@ -37,12 +37,12 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <Button x:Name="setBut" Content="Set Name" HorizontalAlignment="Left" Margin="54,56,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="setBut_Click"/>
-            <TextBox x:Name="setText" HorizontalAlignment="Left" Height="23" Margin="206,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="setText_TextChanged"/>
-            <Label x:Name="retLabel" Content="" HorizontalAlignment="Left" Margin="206,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="1.064,2.016"/>
-            <Button x:Name="retBut" Content="Ret Name" HorizontalAlignment="Left" Margin="54,101,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="retBut_Click"/>
-            <Button x:Name="New_Win" Click="New_Win_Click" Content="New Win" HorizontalAlignment="Left" Margin="54,147,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
-            <TextBox x:Name="txtBlock" HorizontalAlignment="Left" Height="50" Margin="206,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
+            <Button x:Name="setBut" Content="Set Name" Grid.Column="0" Grid.Row="0" HorizontalAlignment="Left" Margin="10, 15" VerticalAlignment="Top" Width="75" Height="23" Click="setBut_Click"/>
+            <TextBox x:Name="setText" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="10, 15" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="setText_TextChanged"/>
+            <Label x:Name="retLabel" Grid.Column="1" Grid.Row="1" Content="" HorizontalAlignment="Left" Margin="10, 15" VerticalAlignment="Top" RenderTransformOrigin="1.064,2.016"/>
+            <Button x:Name="retBut" Content="Ret Name" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="10, 15" VerticalAlignment="Top" Width="75" Height="23" Click="retBut_Click"/>
+            <Button x:Name="New_Win" Grid.Column="0" Grid.Row="2" Click="New_Win_Click" Content="New Win" HorizontalAlignment="Left" Margin="10, 15" VerticalAlignment="Top" Width="75" Height="23"/>
+            <TextBox x:Name="txtBlock" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left" Height="50" Margin="10, 15" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
 
         </Grid>
     </DockPanel>
