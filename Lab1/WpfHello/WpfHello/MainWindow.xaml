@@ -12,6 +12,11 @@
             <MenuItem Header="File">
                 <MenuItem Header="Exit" Click="MenuItem_Click"/>
             </MenuItem>
+            <MenuItem Header="Edit">
+                <MenuItem Header="Копировать" CommandTarget="{Binding ElementName=MainWindow}" Command="Copy" />
+                <MenuItem Header="Вырезать" CommandTarget="{Binding ElementName=MainWindow}" Command="Cut"/>
+                <MenuItem Header="Вставить" CommandTarget="{Binding ElementName=MainWindow}" Command="Paste"/>
+            </MenuItem>
         </Menu>
         <Label x:Name="lbl" HorizontalAlignment="Center" DockPanel.Dock="Top">Пуск</Label>
         <StatusBar x:Name="stb" DockPanel.Dock="Bottom">
