@@ -20,6 +20,7 @@ namespace WpfHello
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MyWindow myWin { get; set; } 
         bool isDataDirty = false;
         public MainWindow()
         {
@@ -27,6 +28,8 @@ namespace WpfHello
             lbl.Content = "Добрый день!";
             setBut.IsEnabled = false;
             retBut.IsEnabled = false;
+            Top = 25;
+            Left = 25;
         }
 
         private void setBut_Click(object sender, RoutedEventArgs e)
@@ -98,6 +101,19 @@ namespace WpfHello
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void New_Win_Click(object sender, RoutedEventArgs e)
+        {
+            if (myWin == null)
+            {
+                myWin = new MyWindow();
+            }
+            myWin.Owner = this;
+            var Location = New_Win.PointToScreen(new Point(0, 0));
+            myWin.Top = Location.Y;
+            myWin.Left = Location.X + New_Win.Width;
+            myWin.Show();
         }
     }
 }
