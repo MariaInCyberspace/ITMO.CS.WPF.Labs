@@ -7,6 +7,12 @@
         mc:Ignorable="d"
         Title="MyMainWindow" Height="350" Width="500" MinHeight="350" MinWidth="300" Closing="Window_Closing">
     <Grid>
+        <Menu HorizontalAlignment="Left" VerticalAlignment="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Click="MenuItem_Click"/>
+            </MenuItem>
+        </Menu>
+
         <Label x:Name="lbl" HorizontalAlignment="Center" VerticalAlignment="Top">Пуск</Label>
         <Button x:Name="setBut" Content="Set Name" HorizontalAlignment="Left" Margin="54,56,0,0" VerticalAlignment="Top" Width="75" Height="23" Click="setBut_Click"/>
         <TextBox x:Name="setText" HorizontalAlignment="Left" Height="23" Margin="206,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="setText_TextChanged"/>
