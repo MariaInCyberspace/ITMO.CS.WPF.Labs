@@ -48,6 +48,28 @@
                     </Trigger.ExitActions>
                 </Trigger> 
                 -->
+                <EventTrigger RoutedEvent="Mouse.MouseEnter">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Duration="0:0:1">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Width" To="100"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="100"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="Mouse.MouseLeave">
+                    <EventTrigger.Actions>
+                        <BeginStoryboard>
+                            <Storyboard Duration="0:0:1">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Width"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger.Actions>
+                </EventTrigger>
             </Style.Triggers>
         </Style>
     </Window.Resources>
