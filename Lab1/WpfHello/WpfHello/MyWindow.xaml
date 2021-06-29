@@ -6,8 +6,37 @@
         xmlns:local="clr-namespace:WpfHello"
         mc:Ignorable="d"
         Title="MyWindow" Height="450" Width="800" Closing="Window_Closing" Background="{StaticResource gradientStyle}" Closed="Window_Closed">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="OverridesDefaultStyle" Value="True"/>
+            <Setter Property="MaxHeight" Value="70"/>
+            <Setter Property="MinHeight" Value="50"/>
+            <Setter Property="MaxWidth" Value="70"/>
+            <Setter Property="MinWidth" Value="50"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Grid>
+                            <Rectangle>
+                                <Rectangle.Fill>
+                                    <RadialGradientBrush>
+                                        <GradientStop Color="AliceBlue" Offset="0"/>
+                                        <GradientStop Color="MediumAquamarine" Offset="3"/>
+                                    </RadialGradientBrush>
+                                </Rectangle.Fill>
+                                <Rectangle.LayoutTransform>
+                                    <RotateTransform Angle="45"/>
+                                </Rectangle.LayoutTransform>
+                            </Rectangle>
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
     <Grid>
-        <Button x:Name="button_MyWindow" Click="button_MyWindow_Click" Content="Button" HorizontalAlignment="Left" Margin="135,48,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
+        <Button x:Name="button_MyWindow" Click="button_MyWindow_Click" Content="Button" Height="55" Width="55"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="80" Margin="303,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
 
     </Grid>
