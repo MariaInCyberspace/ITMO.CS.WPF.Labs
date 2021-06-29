@@ -5,12 +5,34 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfHello"
         mc:Ignorable="d"
-        Title="MyMainWindow" Height="350" Width="500" MinHeight="350" MinWidth="300" 
-        Background="{StaticResource gradientStyle}"
-        Closing="Window_Closing">
+        Title="MyMainWindow" Height="350" Width="500" MinHeight="350" MinWidth="300"
+        Closing="Window_Closing"
+        Background="{StaticResource gradientStyle}">
         
     <Window.Resources>
         <SolidColorBrush x:Key="myBrush" Color="Gold"/>
+        <!--
+        <Style TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="Control.FontFamily" Value="Calibri"></Setter>
+                <Setter Property="Control.FontSize" Value="14"></Setter>
+                <Setter Property="TextBox.VerticalContentAlignment" Value="Top"></Setter>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.Foreground" Value="Red"></Setter>
+                    <Setter Property="TextBox.BorderBrush" Value="Blue"></Setter>
+                    <Setter Property="Control.FontSize" Value="18"></Setter>
+                    <Setter Property="TextBox.BorderThickness" Value="3"></Setter>
+                </Trigger>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Foreground" Value="Red"></Setter>
+                    <Setter Property="TextBox.BorderBrush" Value="Blue"></Setter>
+                    <Setter Property="Control.FontSize" Value="18"></Setter>
+                    <Setter Property="TextBox.BorderThickness" Value="3"></Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
         <Style TargetType="Button">
             <Setter Property="Background" Value="Blue"/>
             <Setter Property="FontSize" Value="14"/>
@@ -25,7 +47,8 @@
                     <Setter Property="Foreground" Value="AliceBlue"/>
                 </Trigger>
             </Style.Triggers>
-        </Style>
+        </Style> 
+        -->
         <Style x:Key="FontTextBox">
             <Style.Setters>
                 <Setter Property="Control.FontFamily" Value="Calibri"/>
@@ -73,6 +96,7 @@
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
     </Window.Resources>
+    
     <DockPanel>
 
         <Menu HorizontalAlignment="Left" VerticalAlignment="Top" DockPanel.Dock="Top">
@@ -99,7 +123,7 @@
                 <TextBlock></TextBlock>
             </StatusBarItem>
             <StatusBarItem x:Name="stb4">
-                <CheckBox x:Name="check">Разрешить открытие формы</CheckBox>
+                <CheckBox x:Name="check" Foreground="Azure">Разрешить открытие формы</CheckBox>
             </StatusBarItem>
         </StatusBar>
         <Grid ButtonBase.Click="Grid_Click" >
