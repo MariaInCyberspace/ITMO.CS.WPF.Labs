@@ -26,11 +26,34 @@ namespace WpfHello
         public MainWindow()
         {
             InitializeComponent();
+            CommandBinding abinding = new CommandBinding();
+            abinding.Command = CustomCommands.Launch;
+            abinding.Executed += new ExecutedRoutedEventHandler(Launch_Handler);
+            abinding.CanExecute += new CanExecuteRoutedEventHandler(LaunchEnabled_Handler);
+            this.CommandBindings.Add(abinding);
             lbl.Content = "Добрый день!";
             setBut.IsEnabled = false;
             retBut.IsEnabled = false;
             Top = 25;
             Left = 25;
+        }
+
+        private void LaunchEnabled_Handler(object sender, CanExecuteRoutedEventArgs e)
+        {
+            e.CanExecute = (bool)check.IsChecked;
+        }
+
+        private void Launch_Handler(object sender, ExecutedRoutedEventArgs e)
+        {
+            if (myWin == null)
+            {
+                myWin = new MyWindow();
+            }
+            myWin.Owner = this;
+            var Location = New_Win.PointToScreen(new Point(0, 0));
+            myWin.Top = Location.Y;
+            myWin.Left = Location.X + New_Win.Width;
+            myWin.Show();
         }
 
         private void SetBut()
@@ -74,19 +97,7 @@ namespace WpfHello
             this.Close();
         }
 
-        private void New_Win_Click(object sender, RoutedEventArgs e)
-        {
-            if (myWin == null)
-            {
-                myWin = new MyWindow();
-            }
-            myWin.Owner = this;
-            var Location = New_Win.PointToScreen(new Point(0, 0));
-            myWin.Top = Location.Y;
-            myWin.Left = Location.X + New_Win.Width;
-            myWin.Show();
-        }
-
+      
         private void Grid_Click(object sender, RoutedEventArgs e)
         {
             FrameworkElement feSource = e.Source as FrameworkElement;
