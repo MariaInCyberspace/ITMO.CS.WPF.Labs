@@ -9,9 +9,7 @@
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="OverridesDefaultStyle" Value="True"/>
-            <Setter Property="MaxHeight" Value="70"/>
             <Setter Property="MinHeight" Value="50"/>
-            <Setter Property="MaxWidth" Value="70"/>
             <Setter Property="MinWidth" Value="50"/>
             <Setter Property="Template">
                 <Setter.Value>
@@ -33,6 +31,24 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers> 
+                <!--
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.EnterActions>
+                        <BeginStoryboard x:Name="Storyboard">
+                            <Storyboard Duration="0:0:1">
+                                <DoubleAnimation Storyboard.TargetProperty="FontSize" To="20" />
+                                <DoubleAnimation Storyboard.TargetProperty="Width" To="100"/>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="100"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </Trigger.EnterActions>
+                    <Trigger.ExitActions>
+                        <StopStoryboard BeginStoryboardName="Storyboard"/>
+                    </Trigger.ExitActions>
+                </Trigger> 
+                -->
+            </Style.Triggers>
         </Style>
     </Window.Resources>
     <Grid>
