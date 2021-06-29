@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfHello"
         mc:Ignorable="d"
-        Title="MyWindow" Height="450" Width="800" Closing="Window_Closing" Closed="Window_Closed">
+        Title="MyWindow" Height="450" Width="800" Closing="Window_Closing" Background="{StaticResource gradientStyle}" Closed="Window_Closed">
     <Grid>
         <Button x:Name="button_MyWindow" Click="button_MyWindow_Click" Content="Button" HorizontalAlignment="Left" Margin="135,48,0,0" VerticalAlignment="Top" Width="75" Height="23"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="80" Margin="303,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
