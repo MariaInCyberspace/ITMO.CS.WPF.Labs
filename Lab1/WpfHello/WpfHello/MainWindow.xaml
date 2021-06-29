@@ -20,7 +20,49 @@
             <Setter Property="BorderBrush" Value="Red"/>
             <Setter Property="BorderThickness" Value="2"/>
             <Setter Property="Padding" Value="5, 3, 3, 5"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="AliceBlue"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
+        <Style x:Key="FontTextBox">
+            <Style.Setters>
+                <Setter Property="Control.FontFamily" Value="Calibri"/>
+                <Setter Property="Control.FontSize" Value="14"></Setter>
+                <Setter Property="TextBox.VerticalAlignment" Value="Center" />
+            </Style.Setters>
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="Control.IsMouseOver" Value="True"/>
+                        <Condition Property="Control.IsFocused" Value="True"/>
+                    </MultiTrigger.Conditions>
+                    <MultiTrigger.Setters>
+                        <Setter Property="Control.Foreground" Value="Red"/>
+                        <Setter Property="TextBox.BorderBrush" Value="Blue"/>
+                        <Setter Property="Control.FontSize" Value="18"></Setter>
+                        <Setter  Property="TextBox.BorderThickness" Value="3"></Setter>
+                    </MultiTrigger.Setters>
+                </MultiTrigger>
+                <!--
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Control.Foreground" Value="Red"/>
+                    <Setter Property="TextBox.BorderBrush" Value="Blue"/>
+                    <Setter Property="Control.FontSize" Value="18"></Setter> 
+                    <Setter  Property="TextBox.BorderThickness" Value="3"></Setter>
+                </Trigger>
+                <Trigger Property="Control.IsMouseOver" Value="True">
+                    <Setter Property="Control.Foreground" Value="AliceBlue"></Setter>
+                    <Setter Property="TextBox.BorderBrush" Value="Bisque"></Setter>
+                    <Setter Property="Control.FontSize" Value="18"></Setter>
+                    <Setter Property="TextBox.BorderThickness" Value="3"></Setter>
+                </Trigger> 
+                -->
+            </Style.Triggers>
+        
+        </Style>
+        
         <Style TargetType="StatusBarItem">
             <Setter Property="FontSize" Value="11"/>
             <Setter Property="FontFamily" Value="Trebuchet MS"/>
@@ -74,7 +116,8 @@
             <Button x:Name="setBut" Content="Set Name" Grid.Column="0" Grid.Row="0" 
                     HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="setText" Background="{StaticResource myBrush}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Stretch" 
-                     Height="23" Margin="10, 15" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="setText_TextChanged"/>
+                     Margin="10, 15" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="setText_TextChanged"
+                     Style="{StaticResource ResourceKey=FontTextBox}"/>
             <Label x:Name="retLabel" Grid.Column="1" Grid.Row="1" Content="" HorizontalAlignment="Left" 
                    Margin="10, 15" VerticalAlignment="Top" RenderTransformOrigin="1.064,2.016"/>
             <Button x:Name="retBut" Content="Ret Name" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left"
