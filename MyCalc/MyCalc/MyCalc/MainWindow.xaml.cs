@@ -23,7 +23,9 @@ namespace MyCalc
         Button factBut;
         Button sqrt;
         Button pow;
+        Button powUniv;
         Expander exp;
+
         public static InputGestureCollection coll;
         // Output Display Constants.
         private const string oneOut = "1";
@@ -103,6 +105,9 @@ namespace MyCalc
                 case "KeyMultiply":
                     CalcEngine.CalcOperation(CalcEngine.Operator.eMultiply);
                     break;
+                case "KeyPowUniv":
+                    CalcEngine.CalcOperation(CalcEngine.Operator.ePowUniv);
+                    break;
                 case "KeyClear":
                     OutputDisplay.Text = "0";
                     CalcEngine.Result = OutputDisplay.Text;
@@ -166,12 +171,20 @@ namespace MyCalc
             pow.Content = "x^2";
             pow.Click += Pow_Click;
 
+            powUniv = new Button();
+            powUniv.Name = "KeyPowUniv";
+            powUniv.Content = "x^n";
+
+
             var newColumn = new ColumnDefinition { Width = GridLength.Auto };
+            var newRow = new RowDefinition { Height = GridLength.Auto };
             myGrid.ColumnDefinitions.Add(newColumn);
+            myGrid.RowDefinitions.Add(newRow);
 
             myGrid.Children.Add(factBut);
             myGrid.Children.Add(sqrt);
             myGrid.Children.Add(exp);
+            myGrid.Children.Add(powUniv);
             exp.Content = pow;
             exp.Header = "More";
 
@@ -179,8 +192,10 @@ namespace MyCalc
             Grid.SetRow(factBut, 2);
             Grid.SetColumn(sqrt, 6);
             Grid.SetRow(sqrt, 3);
+            Grid.SetColumn(powUniv, 6);
+            Grid.SetRow(powUniv, 4);
             Grid.SetColumn(exp, 6);
-            Grid.SetRow(exp, 4);
+            Grid.SetRow(exp, 5);
         }
 
         private void Sqrt_Click(object sender, RoutedEventArgs e)
@@ -195,8 +210,9 @@ namespace MyCalc
 
         private void expandedView_Click(object sender, RoutedEventArgs e)
         {
-            this.Width = 600;
-            if (factBut == null && exp == null)
+            this.Width = 750;
+            this.Height = 500;
+            if (factBut == null && exp == null && sqrt == null && pow == null && powUniv == null)
             {
                 ExpandedView();
             }
@@ -207,9 +223,12 @@ namespace MyCalc
             myGrid.Children.Remove(factBut);
             myGrid.Children.Remove(sqrt);
             myGrid.Children.Remove(exp);
+            myGrid.Children.Remove(powUniv);
             factBut = null;
             sqrt = null;
             exp = null;
+            pow = null;
+            powUniv = null;
         }
 
         private void Pow_Click(object sender, RoutedEventArgs e)

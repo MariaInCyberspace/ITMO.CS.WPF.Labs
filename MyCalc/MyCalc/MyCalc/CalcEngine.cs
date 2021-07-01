@@ -19,7 +19,8 @@ namespace MyCalc
             eAdd = 1,
             eSubtract = 2,
             eMultiply = 3,
-            eDivide = 4
+            eDivide = 4,
+            ePowUniv = 5
         }
 
 
@@ -240,7 +241,15 @@ namespace MyCalc
             if (stringAnswer != "")
             {
                 NumberFormatInfo p = new NumberFormatInfo();
-                p.NumberDecimalSeparator = ",";
+                if (stringAnswer.Contains("."))
+                {
+                    p.NumberDecimalSeparator = ".";
+
+                }
+                else
+                {
+                    p.NumberDecimalSeparator = ",";
+                }
                 secondNumber = Convert.ToDouble(stringAnswer, p);
                 secondNumberAdded = true;
 
@@ -269,6 +278,10 @@ namespace MyCalc
 
                     case Operator.eDivide:
                         numericAnswer = firstNumber / secondNumber;
+                        validEquation = true;
+                        break;
+                    case Operator.ePowUniv:
+                        numericAnswer = Math.Pow(firstNumber, secondNumber);
                         validEquation = true;
                         break;
 
