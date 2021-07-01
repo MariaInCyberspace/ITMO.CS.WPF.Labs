@@ -4,7 +4,9 @@
         <GradientStop Color="Gray" Offset="0" />
         <GradientStop Color="Green" Offset="0.5" />
         <GradientStop Color="LawnGreen" Offset="1" />
-    </LinearGradientBrush>    <ControlTemplate x:Key="customButtonTemplate" TargetType="Button">
+    </LinearGradientBrush>
+
+    <ControlTemplate x:Key="customButtonTemplate" TargetType="Button">
         <Grid>
             <Rectangle>
                 <Rectangle.Fill>
@@ -28,13 +30,16 @@
                             <DoubleAnimation Storyboard.TargetProperty="Width" To="100"/>
                             <DoubleAnimation Storyboard.TargetProperty="Height" To="100"/>
                         </Storyboard>
-                    </BeginStoryboard>                </Trigger.EnterActions>
+                    </BeginStoryboard>
+                </Trigger.EnterActions>
                 <Trigger.ExitActions>
                     <StopStoryboard BeginStoryboardName="Storyboard" />
                 </Trigger.ExitActions>
             </Trigger>
         </ControlTemplate.Triggers>
-    </ControlTemplate>    <Style TargetType="TextBox">
+    </ControlTemplate>
+
+    <Style TargetType="TextBox">
         <Style.Setters>
             <Setter Property="Control.FontFamily" Value="Calibri"></Setter>
             <Setter Property="Control.FontSize" Value="14"></Setter>
@@ -54,6 +59,8 @@
                 <Setter Property="TextBox.BorderThickness" Value="3"></Setter>
             </Trigger>
         </Style.Triggers>
-    </Style>
+    </Style>
+
+
 
 </ResourceDictionary>

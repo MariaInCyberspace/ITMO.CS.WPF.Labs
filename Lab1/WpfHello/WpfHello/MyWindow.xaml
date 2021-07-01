@@ -50,10 +50,22 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <local:BoolToBrushConverter x:Key="boolToBrushConverter"/>
+        <local:StudentList x:Key="studentCollection"/>
+        <DataTemplate x:Key="listBoxTemplate">
+            <StackPanel Orientation="Horizontal">
+                <Rectangle Fill="{Binding Path=IsEnrolled, Converter={StaticResource boolToBrushConverter}}"
+                          Height="10" Width="10" Margin="0, 0, 5, 0" />
+                <TextBlock Text="{Binding Path=StudentName}"/>
+            </StackPanel>
+        </DataTemplate>
     </Window.Resources>
     <Grid>
         <Button x:Name="button_MyWindow"  Template="{DynamicResource customButtonTemplate}" Click="button_MyWindow_Click" Content="Button" Height="55" Width="55"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="80" Margin="303,48,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="listBox1" ItemsSource="{StaticResource studentCollection}" 
+                ItemTemplate="{StaticResource listBoxTemplate}" Height="100" HorizontalAlignment="Left" 
+                 VerticalAlignment="Top" Margin="10" Width="250"></ListBox>
 
     </Grid>
 </Window>

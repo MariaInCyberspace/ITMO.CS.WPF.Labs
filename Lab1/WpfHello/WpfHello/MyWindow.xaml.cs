@@ -32,6 +32,7 @@ namespace WpfHello
             base.Close();
         }
 
+
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (_close) return;
@@ -44,7 +45,10 @@ namespace WpfHello
             wnd1 = Owner as MainWindow;
             if (wnd1 != null)
             {
-                wnd1.txtBlock.Text = textBox.Text;
+                StudentList st = new StudentList();
+                int i = listBox1.SelectedIndex;
+                wnd1.txtBlock.Text = textBox.Text + " " + st.ElementAt(i).StudentName.ToString();
+               
                 PrintLogFile();
             }
             Close();
