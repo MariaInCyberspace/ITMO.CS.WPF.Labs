@@ -52,9 +52,9 @@ namespace MyCalc
             secondNumberAdded = false;
         }
 
+        // To store the result after operations
         public static string Result { get; set; }
 
-        public static double Resultt { get; set; }
 
         //
         // Returns the custom version string to the caller.
@@ -97,7 +97,16 @@ namespace MyCalc
             if (stringAnswer != "" && !secondNumberAdded)
             {
                 NumberFormatInfo p = new NumberFormatInfo();
-                p.NumberDecimalSeparator = ",";
+                if (stringAnswer.Contains("."))
+                {
+                    p.NumberDecimalSeparator = ".";
+
+                }
+                else
+                {
+                    p.NumberDecimalSeparator = ",";
+                }
+
                 firstNumber = Convert.ToDouble(stringAnswer, p);
                 // if (stringAnswer.Contains(",")) { }
                 calcOperation = calcOper;
@@ -131,7 +140,7 @@ namespace MyCalc
         {
             if (!decimalAdded && !secondNumberAdded)
             {
-                if (stringAnswer != "")
+                if (stringAnswer != "" && !stringAnswer.Contains(",") && !stringAnswer.Contains("."))
                 {
                     stringAnswer += ".";
                 }
@@ -152,44 +161,71 @@ namespace MyCalc
         public static string CalcFactorial()
         {
             int numHold;
-            if (stringAnswer != "" && !stringAnswer.Contains(".") && !stringAnswer.Contains(",") && !stringAnswer.Contains("-"))
+            try
             {
-                NumberFormatInfo p = new NumberFormatInfo();
-                p.NumberDecimalSeparator = ",";
-                numHold = Convert.ToInt32(stringAnswer, p);
-                int fact = 1;
-                for (int i = numHold; i > 0; i--)
+                if (stringAnswer != "" && !stringAnswer.Contains(".") && !stringAnswer.Contains(",") && !stringAnswer.Contains("-"))
                 {
-                    fact *= i;
+                    NumberFormatInfo p = new NumberFormatInfo();
+                    p.NumberDecimalSeparator = ",";
+                    numHold = Convert.ToInt32(stringAnswer, p);
+                    int fact = 1;
+                    for (int i = numHold; i > 0; i--)
+                    {
+                        fact *= i;
+                    }
+                    stringAnswer = System.Convert.ToString(fact);
                 }
-                stringAnswer = System.Convert.ToString(fact);
-            }
-            else
-            {
-                stringAnswer = "Mistake";
-            }
+                else
+                {
+                    stringAnswer = "Mistake";
+                }
 
+                return stringAnswer;
+            }
+            catch (FormatException)
+            {
+                CalcReset();
+            }
             return stringAnswer;
+            
         }
 
+        // Called when square root symbol is pressed
         public static string CalcSqrt()
         {
             double numHold;
-            if (stringAnswer != "")
+            try
             {
-                numHold = Math.Sqrt(Convert.ToDouble(stringAnswer));
-                stringAnswer = numHold.ToString();
+                if (stringAnswer != "")
+                {
+                    numHold = Math.Sqrt(Convert.ToDouble(stringAnswer));
+                    stringAnswer = numHold.ToString();
+                }
+                return stringAnswer;
+            } 
+            catch (FormatException)
+            {
+                CalcReset();
             }
             return stringAnswer;
         }
 
+        // Called when 'x^2' button is pressed
         public static string CalcPow()
         {
             double numHold;
-            if (stringAnswer != "")
+            try
             {
-                numHold = Math.Pow(Convert.ToDouble(stringAnswer), 2);
-                stringAnswer = numHold.ToString();
+                if (stringAnswer != "")
+                {
+                    numHold = Math.Pow(Convert.ToDouble(stringAnswer), 2);
+                    stringAnswer = numHold.ToString();
+                }
+                return stringAnswer;
+            }
+            catch (FormatException)
+            {
+                CalcReset();
             }
             return stringAnswer;
         }
@@ -242,7 +278,9 @@ namespace MyCalc
                 }
 
                 if (validEquation)
+                {
                     stringAnswer = System.Convert.ToString(numericAnswer);
+                }
             }
             // double.TryParse(stringAnswer, out firstNumber);
             return stringAnswer;
@@ -257,7 +295,15 @@ namespace MyCalc
             numericAnswer = 0;
             firstNumber = 0;
             secondNumber = 0;
-            stringAnswer = Result;
+            if (Result != "0")
+            {
+                stringAnswer = Result;
+            }
+            else if (Result == "0")
+            {
+                stringAnswer = "";
+            }
+
             calcOperation = Operator.eUnknown;
             decimalAdded = false;
             secondNumberAdded = false;

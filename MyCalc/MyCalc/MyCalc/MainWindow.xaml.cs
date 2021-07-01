@@ -23,6 +23,7 @@ namespace MyCalc
         Button factBut;
         Button sqrt;
         Button pow;
+        Expander exp;
         public static InputGestureCollection coll;
         // Output Display Constants.
         private const string oneOut = "1";
@@ -103,9 +104,9 @@ namespace MyCalc
                     CalcEngine.CalcOperation(CalcEngine.Operator.eMultiply);
                     break;
                 case "KeyClear":
-                    CalcEngine.CalcReset();
                     OutputDisplay.Text = "0";
                     CalcEngine.Result = OutputDisplay.Text;
+                    CalcEngine.CalcReset();
                     break;
                 case "KeyPoint":
                     OutputDisplay.Text = CalcEngine.CalcDecimal();
@@ -151,7 +152,7 @@ namespace MyCalc
 
         public void ExpandedView()
         {
-            Expander e = new Expander();
+            exp = new Expander();
 
             factBut = new Button();
             factBut.Content = "n!";
@@ -170,16 +171,16 @@ namespace MyCalc
 
             myGrid.Children.Add(factBut);
             myGrid.Children.Add(sqrt);
-            myGrid.Children.Add(e);
-            e.Content = pow;
-            e.Header = "More";
+            myGrid.Children.Add(exp);
+            exp.Content = pow;
+            exp.Header = "More";
 
             Grid.SetColumn(factBut, 6);
             Grid.SetRow(factBut, 2);
             Grid.SetColumn(sqrt, 6);
             Grid.SetRow(sqrt, 3);
-            Grid.SetColumn(e, 6);
-            Grid.SetRow(e, 4);
+            Grid.SetColumn(exp, 6);
+            Grid.SetRow(exp, 4);
         }
 
         private void Sqrt_Click(object sender, RoutedEventArgs e)
@@ -195,13 +196,20 @@ namespace MyCalc
         private void expandedView_Click(object sender, RoutedEventArgs e)
         {
             this.Width = 600;
-            ExpandedView();
+            if (factBut == null && exp == null)
+            {
+                ExpandedView();
+            }
         }
 
         private void standardView_Click(object sender, RoutedEventArgs e)
         {
             myGrid.Children.Remove(factBut);
             myGrid.Children.Remove(sqrt);
+            myGrid.Children.Remove(exp);
+            factBut = null;
+            sqrt = null;
+            exp = null;
         }
 
         private void Pow_Click(object sender, RoutedEventArgs e)
