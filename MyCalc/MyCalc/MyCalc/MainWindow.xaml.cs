@@ -24,6 +24,8 @@ namespace MyCalc
         Button sqrt;
         Button pow;
         Button powUniv;
+        Button revBut;
+        Button cubeRoot;
         Expander exp;
 
         public static InputGestureCollection coll;
@@ -158,6 +160,8 @@ namespace MyCalc
         public void ExpandedView()
         {
             exp = new Expander();
+            StackPanel expStack = new StackPanel();
+            expStack.Orientation = Orientation.Horizontal;
 
             factBut = new Button();
             factBut.Content = "n!";
@@ -167,13 +171,21 @@ namespace MyCalc
             sqrt.Content = "√";
             sqrt.Click += Sqrt_Click;
 
+            cubeRoot = new Button();
+            cubeRoot.Content = "∛";
+            cubeRoot.Click += CubeRoot_Click;
+
             pow = new Button();
             pow.Content = "x^2";
             pow.Click += Pow_Click;
 
             powUniv = new Button();
             powUniv.Name = "KeyPowUniv";
-            powUniv.Content = "x^n";
+            powUniv.Content = " x^n ";
+
+            revBut = new Button();
+            revBut.Content = " 1/x ";
+            revBut.Click += RevBut_Click;
 
 
             var newColumn = new ColumnDefinition { Width = GridLength.Auto };
@@ -183,19 +195,37 @@ namespace MyCalc
 
             myGrid.Children.Add(factBut);
             myGrid.Children.Add(sqrt);
+            myGrid.Children.Add(pow);
+            myGrid.Children.Add(cubeRoot);
             myGrid.Children.Add(exp);
-            myGrid.Children.Add(powUniv);
-            exp.Content = pow;
-            exp.Header = "More";
 
+            exp.Header = "More";
+            exp.Content = expStack;
+            expStack.Children.Add(powUniv);
+            expStack.Children.Add(revBut);
+          
             Grid.SetColumn(factBut, 6);
             Grid.SetRow(factBut, 2);
             Grid.SetColumn(sqrt, 6);
             Grid.SetRow(sqrt, 3);
-            Grid.SetColumn(powUniv, 6);
-            Grid.SetRow(powUniv, 4);
-            Grid.SetColumn(exp, 6);
+            Grid.SetColumn(pow, 6);
+            Grid.SetRow(pow, 4);
+            Grid.SetColumn(cubeRoot, 6);
+            Grid.SetRow(cubeRoot, 5);
+            Grid.SetColumnSpan(exp, 3);
+            Grid.SetRowSpan(exp, 2);
+            Grid.SetColumn(exp, 0);
             Grid.SetRow(exp, 5);
+        }
+
+        private void CubeRoot_Click(object sender, RoutedEventArgs e)
+        {
+            OutputDisplay.Text = CalcEngine.CalcCubeRoot();
+        }
+
+        private void RevBut_Click(object sender, RoutedEventArgs e)
+        {
+            OutputDisplay.Text = CalcEngine.CalcReverse();
         }
 
         private void Sqrt_Click(object sender, RoutedEventArgs e)
@@ -210,8 +240,8 @@ namespace MyCalc
 
         private void expandedView_Click(object sender, RoutedEventArgs e)
         {
-            this.Width = 750;
-            this.Height = 500;
+            this.Width += 50;
+            this.Height += 50;
             if (factBut == null && exp == null && sqrt == null && pow == null && powUniv == null)
             {
                 ExpandedView();
@@ -223,11 +253,16 @@ namespace MyCalc
             myGrid.Children.Remove(factBut);
             myGrid.Children.Remove(sqrt);
             myGrid.Children.Remove(exp);
-            myGrid.Children.Remove(powUniv);
+            myGrid.Children.Remove(pow);
+            myGrid.Children.Remove(cubeRoot);
+            this.Width -= 50;
+            this.Height -= 50;
             factBut = null;
             sqrt = null;
             exp = null;
             pow = null;
+            revBut = null;
+            cubeRoot = null;
             powUniv = null;
         }
 

@@ -211,6 +211,48 @@ namespace MyCalc
             return stringAnswer;
         }
 
+        public static string CalcReverse()
+        {
+            double numHold;
+            try
+            {
+                if (stringAnswer != "")
+                {
+                    numHold = 1 / (Convert.ToDouble(stringAnswer));
+                    stringAnswer = numHold.ToString();
+                }
+                return stringAnswer;
+            }
+            catch (DivideByZeroException)
+            {
+                CalcReset();
+            }
+            catch (FormatException)
+            {
+                CalcReset();
+            }
+            return stringAnswer;
+        }
+
+        public static string CalcCubeRoot()
+        {
+            double numHold;
+            try
+            {
+                if (stringAnswer != "")
+                {
+                    numHold = Math.Pow(Convert.ToDouble(stringAnswer), (1.0 / 3.0));
+                    stringAnswer = numHold.ToString();
+                }
+                return stringAnswer;
+            }
+            catch (FormatException)
+            {
+                CalcReset();
+            }
+            return stringAnswer;
+        }
+
         // Called when 'x^2' button is pressed
         public static string CalcPow()
         {
@@ -284,7 +326,7 @@ namespace MyCalc
                         numericAnswer = Math.Pow(firstNumber, secondNumber);
                         validEquation = true;
                         break;
-
+                    
                     default:
                         validEquation = false;
                         break;
