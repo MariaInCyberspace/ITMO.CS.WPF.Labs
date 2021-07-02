@@ -27,6 +27,7 @@ namespace WpfHello
         {
             InitializeComponent();
             CommandBinding abinding = new CommandBinding();
+            myWin = new MyWindow();
             abinding.Command = CustomCommands.Launch;
             abinding.Executed += new ExecutedRoutedEventHandler(Launch_Handler);
             abinding.CanExecute += new CanExecuteRoutedEventHandler(LaunchEnabled_Handler);
@@ -36,6 +37,12 @@ namespace WpfHello
             retBut.IsEnabled = false;
             Top = 25;
             Left = 25;
+            myWin.Closed += MyWin_Closed;
+        }
+
+        private void MyWin_Closed(object sender, EventArgs e)
+        {
+            myWin = null;
         }
 
         private void LaunchEnabled_Handler(object sender, CanExecuteRoutedEventArgs e)
@@ -48,6 +55,7 @@ namespace WpfHello
             if (myWin == null)
             {
                 myWin = new MyWindow();
+                myWin.Owner = this;
             }
             myWin.Owner = this;
             var Location = New_Win.PointToScreen(new Point(0, 0));

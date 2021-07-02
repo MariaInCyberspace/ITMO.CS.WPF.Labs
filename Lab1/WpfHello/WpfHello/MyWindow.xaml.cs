@@ -24,6 +24,7 @@ namespace WpfHello
         public MyWindow()
         {
             InitializeComponent();
+            wnd1 = Owner as MainWindow;
         }
 
         public new void Close()
@@ -42,7 +43,7 @@ namespace WpfHello
 
         private void button_MyWindow_Click(object sender, RoutedEventArgs e)
         {
-            wnd1 = Owner as MainWindow;
+           wnd1 = Owner as MainWindow;
             if (wnd1 != null)
             {
                 StudentList st = new StudentList();
