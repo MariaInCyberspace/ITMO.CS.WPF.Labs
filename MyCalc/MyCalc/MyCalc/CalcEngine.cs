@@ -253,6 +253,40 @@ namespace MyCalc
             return stringAnswer;
         }
 
+        public static string CalcQuadEq(double a, double b, double c)
+        {
+            double underRoot = Math.Pow(b, 2) - 4 * a * c;
+            double x, x1, x2, imag;
+            if (underRoot > 0)
+            {
+                x1 = (-b + System.Math.Sqrt(underRoot)) / (2 * a);
+
+                x2 = (-b - System.Math.Sqrt(underRoot)) / (2 * a);
+
+                double x11 = Math.Round(x1, 4); 
+                double x22 = Math.Round(x2, 4);
+                stringAnswer = "Real Solutions: " + x11.ToString() + ": " + x22.ToString();
+            }
+            else if (underRoot < 0)
+            {
+                underRoot = -underRoot;
+
+                x = -b / (2 * a);
+
+                imag = System.Math.Sqrt(underRoot) / (2 * a);
+                double xx = Math.Round(x, 4); 
+                double imagg = Math.Round(imag, 4);
+                stringAnswer = "Imaginary Solutions: " + xx.ToString() + " " + imagg.ToString() + "; " + xx.ToString() + " " + imagg.ToString();
+            }
+            else
+            {
+                x = (-b + System.Math.Sqrt(underRoot)) / (2 * a);
+                double xx = Math.Round(x, 4);
+                stringAnswer = "Real solution: " + xx.ToString();
+            }
+            return stringAnswer;
+        }
+
         // Called when 'x^2' button is pressed
         public static string CalcPow()
         {

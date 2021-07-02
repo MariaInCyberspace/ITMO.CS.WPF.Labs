@@ -17,7 +17,6 @@
             Command="ApplicationCommands.Help" 
             Executed="CommandBinding_Executed_2">
         </CommandBinding>
-
     </Window.CommandBindings>
     <Window.Resources>
         <SolidColorBrush x:Key="MyBrush" Color="DarkOliveGreen"/>
@@ -61,6 +60,7 @@
                 <MenuItem x:Name="HelpCom" Header="Help">
                     <MenuItem x:Name="expandedView" Header="Expanded view" Click="expandedView_Click"/>
                     <MenuItem x:Name="standardView" Header="Standard view" Click="standardView_Click"/>
+                    <MenuItem x:Name="quadEq" Header="Quadratic Equation" Click="quadEq_Click"/>
                     <MenuItem x:Name="itemHelp" Header="_About..." InputGestureText="Ctrl+A" Command="{x:Static local:MainWindow.HelpCmd}"/>
                     <MenuItem Command="ApplicationCommands.Help" />
                 </MenuItem>

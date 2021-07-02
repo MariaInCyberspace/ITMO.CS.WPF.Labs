@@ -20,6 +20,8 @@ namespace MyCalc
     /// </summary>
     public partial class MainWindow : Window
     {
+        public QuadraticEquationForm quadEqForm { get; set; }
+
         Button factBut;
         Button sqrt;
         Button pow;
@@ -46,6 +48,7 @@ namespace MyCalc
             InitializeComponent();
             OutputDisplay.Text = "0";
 
+            quadEqForm = new QuadraticEquationForm();
             InputGestureCollection coll = new InputGestureCollection();
             coll.Add(new KeyGesture(Key.A, ModifierKeys.Control, "Ctrl+A"));
         }
@@ -276,6 +279,13 @@ namespace MyCalc
         private void Pow_Click(object sender, RoutedEventArgs e)
         {
             OutputDisplay.Text = CalcEngine.CalcPow();
+        }
+
+
+        private void quadEq_Click(object sender, RoutedEventArgs e)
+        {
+            quadEqForm.Owner = this;
+            quadEqForm.Show();   
         }
     }
 
