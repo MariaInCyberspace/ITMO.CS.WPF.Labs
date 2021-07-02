@@ -164,26 +164,32 @@ namespace MyCalc
             expStack.Orientation = Orientation.Horizontal;
 
             factBut = new Button();
+            factBut.ToolTip = "Calculate the factorial of a number";
             factBut.Content = "n!";
             factBut.Click += FactBut_Click;
 
             sqrt = new Button();
+            sqrt.ToolTip = "Calculate the square root of a number";
             sqrt.Content = "√";
             sqrt.Click += Sqrt_Click;
 
             cubeRoot = new Button();
+            cubeRoot.ToolTip = "Calculate the cube root of a number";
             cubeRoot.Content = "∛";
             cubeRoot.Click += CubeRoot_Click;
 
             pow = new Button();
+            pow.ToolTip = "Raise the number to the power of 2";
             pow.Content = "x^2";
             pow.Click += Pow_Click;
 
             powUniv = new Button();
+            powUniv.ToolTip = "Raise the number to the power of a number you input next";
             powUniv.Name = "KeyPowUniv";
             powUniv.Content = " x^n ";
 
             revBut = new Button();
+            revBut.ToolTip = "Calculate the reverse of a number";
             revBut.Content = " 1/x ";
             revBut.Click += RevBut_Click;
 
@@ -200,6 +206,7 @@ namespace MyCalc
             myGrid.Children.Add(exp);
 
             exp.Header = "More";
+            exp.ToolTip = exp.ToolTip = "Press the arrow symbol to find additional functionality";
             exp.Content = expStack;
             expStack.Children.Add(powUniv);
             expStack.Children.Add(revBut);
