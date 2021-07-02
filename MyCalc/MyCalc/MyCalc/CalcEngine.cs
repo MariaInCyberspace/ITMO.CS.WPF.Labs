@@ -263,8 +263,8 @@ namespace MyCalc
 
                 x2 = (-b - System.Math.Sqrt(underRoot)) / (2 * a);
 
-                double x11 = Math.Round(x1, 4); 
-                double x22 = Math.Round(x2, 4);
+                double x11 = Math.Round(x1, 2); 
+                double x22 = Math.Round(x2, 2);
                 stringAnswer = "Real Solutions: " + x11.ToString() + ": " + x22.ToString();
             }
             else if (underRoot < 0)
@@ -274,14 +274,14 @@ namespace MyCalc
                 x = -b / (2 * a);
 
                 imag = System.Math.Sqrt(underRoot) / (2 * a);
-                double xx = Math.Round(x, 4); 
-                double imagg = Math.Round(imag, 4);
+                double xx = Math.Round(x, 2); 
+                double imagg = Math.Round(imag, 2);
                 stringAnswer = "Imaginary Solutions: " + xx.ToString() + " " + imagg.ToString() + "; " + xx.ToString() + " " + imagg.ToString();
             }
             else
             {
                 x = (-b + System.Math.Sqrt(underRoot)) / (2 * a);
-                double xx = Math.Round(x, 4);
+                double xx = Math.Round(x, 2);
                 stringAnswer = "Real solution: " + xx.ToString();
             }
             return stringAnswer;

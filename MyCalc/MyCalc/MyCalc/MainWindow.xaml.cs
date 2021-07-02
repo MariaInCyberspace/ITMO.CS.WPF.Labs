@@ -49,8 +49,15 @@ namespace MyCalc
             OutputDisplay.Text = "0";
 
             quadEqForm = new QuadraticEquationForm();
+            quadEqForm.Closed += QuadEqForm_Closed;
+
             InputGestureCollection coll = new InputGestureCollection();
             coll.Add(new KeyGesture(Key.A, ModifierKeys.Control, "Ctrl+A"));
+        }
+
+        private void QuadEqForm_Closed(object sender, EventArgs e)
+        {
+            quadEqForm = null;
         }
 
         public static RoutedCommand HelpCmd = new RoutedCommand("About", typeof(MainWindow), coll);
@@ -284,6 +291,11 @@ namespace MyCalc
 
         private void quadEq_Click(object sender, RoutedEventArgs e)
         {
+            if (quadEqForm == null)
+            {
+                quadEqForm = new QuadraticEquationForm();
+                quadEqForm.Owner = this;
+            }
             quadEqForm.Owner = this;
             quadEqForm.Show();   
         }

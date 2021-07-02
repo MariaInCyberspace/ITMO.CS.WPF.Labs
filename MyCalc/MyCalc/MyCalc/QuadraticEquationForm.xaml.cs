@@ -25,6 +25,7 @@ namespace MyCalc
             InitializeComponent();
         }
 
+
         private void submitCoef_Click(object sender, RoutedEventArgs e)
         {
             main = Owner as MainWindow;
