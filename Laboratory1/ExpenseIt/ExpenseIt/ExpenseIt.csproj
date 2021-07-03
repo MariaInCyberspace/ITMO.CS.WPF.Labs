@@ -111,5 +111,8 @@
   <ItemGroup>
     <Resource Include="watermark.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Data\XMLDataProvider.xml" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
