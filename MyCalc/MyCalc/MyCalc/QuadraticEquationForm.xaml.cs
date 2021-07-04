@@ -29,6 +29,10 @@ namespace MyCalc
         private void submitCoef_Click(object sender, RoutedEventArgs e)
         {
             main = Owner as MainWindow;
+            if (textBox_a.Text == "" || textBox_b.Text == "" || textBox_c.Text == "")
+            {
+                MessageBox.Show("Please enter the numbers");
+            }
             double a = Convert.ToDouble(textBox_a.Text);
             double b = Convert.ToDouble(textBox_b.Text);
             double c = Convert.ToDouble(textBox_c.Text);
