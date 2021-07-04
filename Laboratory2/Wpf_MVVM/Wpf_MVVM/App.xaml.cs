@@ -5,6 +5,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using Wpf_MVVM.View;
+using Wpf_MVVM.Model;
+using Wpf_MVVM.ViewModel;
 
 namespace Wpf_MVVM
 {
@@ -13,5 +16,13 @@ namespace Wpf_MVVM
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            var mw = new MainWindowView
+            {   
+                DataContext = new MainViewModel()
+            };
+            mw.Show();
+        }
     }
 }
