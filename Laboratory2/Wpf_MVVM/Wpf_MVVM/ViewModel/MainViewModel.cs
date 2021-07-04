@@ -39,7 +39,7 @@ namespace Wpf_MVVM.ViewModel
         /// </summary>
         private void ClickMethod()
         {
-            MessageBox.Show("Сlick command");
+            MessageBox.Show("Person - " + People.FirstName + " " + People.LastName);
         }
         #endregion
 
